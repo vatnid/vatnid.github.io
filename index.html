@@ -14,10 +14,16 @@
 
       }
     </script>
-    <textarea name="input" cols="50" rows="15"></textarea><br>
-    <select>
-      <option value="bulgarianctl">Bulgarian Cyrillic → Latin</option>
-    </select>
-    <input type="submit" value="Submit" onclick="return convert();" />
+    <div class="input">
+      <textarea id="source" cols="50" rows="15"></textarea><br>
+      <select>
+        <option value="bulgarianctl">Bulgarian Cyrillic → Latin</option>
+      </select>
+      <input type="submit" value="Submit" onclick="return convert();" />
+    </div>
+    <br>
+    <div class="output">
+      <textarea id="target" cols="50" rows="15"></textarea>
+    </div>
   </body>
 </html>
