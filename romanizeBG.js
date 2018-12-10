@@ -32,7 +32,15 @@ function romanizeBG(input) {
     var assigned = false;
     for (j = 0; j < alphabet.length; j++) {
       if (!assigned) {
-        /*
+        if (input[i] == alphabet[j]) { // if the letter matches one in the alphabet
+          // special cases
+          if ("ЩЮЯ".includes(input[i]) && input[i+1] == input[i+1].toUpperCase())
+            output += latin[j].toUpperCase();
+          else
+            output += latin[j];
+          assigned = true;
+        }
+/*
         if (input[i].toLowerCase() == "ъ") {
           alert("if (input[i].toLowerCase() == 'ъ') starts");
           var wordbegin = i;
@@ -58,22 +66,8 @@ function romanizeBG(input) {
           alert("output: " + output);
           input.substring(wordbegin, wordend+1) = stress;
           output += latin[j];
-
         }
-        */
-        if (input[i] == "Щ" && input[i+1] == input[i+1].toUpperCase()) {
-          output += "ŠT";
-          assigned = true;
-        } else if (input[i] == "Ю" && input[i+1] == input[i+1].toUpperCase()) {
-          output += "JU";
-          assigned = true;
-        } else if (input[i] == "Я" && input[i+1] == input[i+1].toUpperCase()) {
-          output += "JA";
-          assigned = true;
-        } else if (input[i] == alphabet[j]) {
-          output += latin[j];
-          assigned = true;
-        }
+*/
       }
     }
     if (!assigned)
