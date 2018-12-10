@@ -14,11 +14,11 @@
       var stress = "";
 
       function convert() {
-        var source = document.getElementById("source").value; // functional
-        var target = document.getElementById("target").value; // not sure why this doesn't work
+        var source = document.getElementById("input").value; // functional
+        var target = document.getElementById("output").value; // not sure why this doesn't work
 
         // Bulgarian Cyrillic → Latin
-        if (document.getElementById("bglatin").selected == true) {
+        if (document.getElementById("romanizebg").selected == true) {
           document.getElementById("target").value = romanizeBG(source);
         } else if (document.getElementById("debug").selected == true) {
           bulgarianStress("слънце");
@@ -26,22 +26,22 @@
       }
 
     </script>
-    <div class="input">
-      <textarea id="source" cols="50" rows="15"></textarea><br>
+    <div class="inputarea">
+      <textarea id="input" cols="50" rows="15"></textarea><br>
       <select>
-        <option id="bglatin" value="bglatin">Bulgarian Cyrillic → Latin</option>
+        <option id="romanizebg" value="romanizebg">Български → Bălgarski</option>
         <!-- <option id="debug" value="debug">Debug mode</option> -->
       </select>
       <input type="submit" value="Submit" onclick="return convert();" />
     </div>
     <br>
-    <div class="output">
-      <textarea id="target" cols="50" rows="15"></textarea>
+    <div class="outputarea">
+      <textarea id="output" cols="50" rows="15"></textarea>
     </div>
-    <div class="error">
+    <div class="errorarea">
       <span id="errormsg"></span>
     </div>
-    <div class="hidden">
+    <div class="hiddenarea">
       <span id="placeholder"></span>
     </div>
   </body>
