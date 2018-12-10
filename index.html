@@ -9,14 +9,57 @@
   </head>
   <body>
     <script type="text/javascript">
-      function convert() {
 
+      function convert() {
+        var source = document.getElementById("source").value; // functional
+        var target = document.getElementById("target").value; // not sure why this doesn't work
+
+        // Bulgarian Cyrillic → Latin
+        if (document.getElementById("bglatin").selected == true) {
+          //document.getElementById("target").value = source;
+          document.getElementById("target").value = bulgarianToLatin(source);
+
+        }
       }
+
+      // Bulgarian Cyrillic → Latin
+      function bulgarianToLatin(input) {
+        var alphabet =  ["а", "б", "в", "г", "д", "е", "ж", "з", "и", "й", "к", "л", "м", "н", "о", "п", "р", "с", "т", "у", "ф", "х", "ц", "ч", "ш", "щ", "ъ", "ь", "ю", "я",    "А", "Б", "В", "Г", "Д", "Е", "Ж", "З", "И", "Й", "К", "Л", "М", "Н", "О", "П", "Р", "С", "Т", "У", "Ф", "Х", "Ц", "Ч", "Ш", "Щ", "Ъ", "Ь", "Ю", "Я"];
+        var latin =     ["a", "b", "v", "g", "d", "e", "ž", "z", "i", "j", "k", "l", "m", "n", "o", "p", "r", "s", "t", "u", "f", "h", "c", "č", "š", "št", "ă", "j", "ju", "ja", "A", "B", "V", "G", "D", "E", "Ž", "Z", "I", "J", "K", "L", "M", "N", "O", "P", "R", "S", "T", "U", "F", "H", "C", "Č", "Š", "Št", "Ă", "J", "Ju", "Ja"];
+        var output = "";
+        //input = input.toLowerCase();
+
+        for (i = 0; i < input.length; i++) {
+          var assigned = false;
+          for (j = 0; j < alphabet.length; j++) {
+            if (!assigned) {
+              if (input[i] == "Щ" && input[i+1] == input[i+1].toUpperCase()) {
+                output += "ŠT";
+                assigned = true;
+              } else if (input[i] == "Ю" && input[i+1] == input[i+1].toUpperCase()) {
+                output += "JU";
+                assigned = true;
+              } else if (input[i] == "Я" && input[i+1] == input[i+1].toUpperCase()) {
+                output += "JA";
+                assigned = true;
+              } else if (input[i] == alphabet[j]) {
+                output += latin[j];
+                assigned = true;
+              }
+            }
+          }
+          if (!assigned)
+            output += input[i];
+        }
+
+        return output;
+      }
+
     </script>
     <div class="input">
       <textarea id="source" cols="50" rows="15"></textarea><br>
       <select>
-        <option value="bulgarianctl">Bulgarian Cyrillic → Latin</option>
+        <option id="bglatin" value="bglatin">Bulgarian Cyrillic → Latin</option>
       </select>
       <input type="submit" value="Submit" onclick="return convert();" />
     </div>
