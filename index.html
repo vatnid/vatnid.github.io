@@ -8,6 +8,7 @@
     <title>Vatnið's Github</title>
   </head>
   <body>
+    <script src="jquery-3.3.1.js"></script>
     <script type="text/javascript">
 
       function convert() {
@@ -16,16 +17,19 @@
 
         // Bulgarian Cyrillic → Latin
         if (document.getElementById("bglatin").selected == true) {
-          //document.getElementById("target").value = source;
           document.getElementById("target").value = bulgarianToLatin(source);
+        } else if (document.getElementById("debug").selected == true) {
 
         }
       }
 
       // Bulgarian Cyrillic → Latin
       function bulgarianToLatin(input) {
-        var alphabet =  ["а", "б", "в", "г", "д", "е", "ж", "з", "и", "й", "к", "л", "м", "н", "о", "п", "р", "с", "т", "у", "ф", "х", "ц", "ч", "ш", "щ", "ъ", "ь", "ю", "я",    "А", "Б", "В", "Г", "Д", "Е", "Ж", "З", "И", "Й", "К", "Л", "М", "Н", "О", "П", "Р", "С", "Т", "У", "Ф", "Х", "Ц", "Ч", "Ш", "Щ", "Ъ", "Ь", "Ю", "Я"];
-        var latin =     ["a", "b", "v", "g", "d", "e", "ž", "z", "i", "j", "k", "l", "m", "n", "o", "p", "r", "s", "t", "u", "f", "h", "c", "č", "š", "št", "ă", "j", "ju", "ja", "A", "B", "V", "G", "D", "E", "Ž", "Z", "I", "J", "K", "L", "M", "N", "O", "P", "R", "S", "T", "U", "F", "H", "C", "Č", "Š", "Št", "Ă", "J", "Ju", "Ja"];
+        var alphabet =  ["а", "б", "в", "г", "д", "е", "ж", "з", "и", "й", "к", "л", "м", "н", "о", "п", "р", "с", "т", "у", "ф", "х", "ц", "ч", "ш", "щ", "ъ", "ь", "ю", "я",
+                         "А", "Б", "В", "Г", "Д", "Е", "Ж", "З", "И", "Й", "К", "Л", "М", "Н", "О", "П", "Р", "С", "Т", "У", "Ф", "Х", "Ц", "Ч", "Ш", "Щ", "Ъ", "Ь", "Ю", "Я"];
+        var latin =     ["a", "b", "v", "g", "d", "e", "ž", "z", "i", "j", "k", "l", "m", "n", "o", "p", "r", "s", "t", "u", "f", "h", "c", "č", "š", "št", "ă", "j", "ju", "ja",
+                         "A", "B", "V", "G", "D", "E", "Ž", "Z", "I", "J", "K", "L", "M", "N", "O", "P", "R", "S", "T", "U", "F", "H", "C", "Č", "Š", "Št", "Ă", "J", "Ju", "Ja"];
+
         var output = "";
         //input = input.toLowerCase();
 
@@ -60,12 +64,16 @@
       <textarea id="source" cols="50" rows="15"></textarea><br>
       <select>
         <option id="bglatin" value="bglatin">Bulgarian Cyrillic → Latin</option>
+        <option id="debug" value="debug">Debug mode</option>
       </select>
       <input type="submit" value="Submit" onclick="return convert();" />
     </div>
     <br>
     <div class="output">
       <textarea id="target" cols="50" rows="15"></textarea>
+    </div>
+    <div id="errormsg" class="error">
+
     </div>
   </body>
 </html>
