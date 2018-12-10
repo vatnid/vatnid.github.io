@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+	<head> 
+		<title> Check your level! </title>
+		<link rel="stylesheet" type="text/css" href="gamestyle.css">
+        <script type="text/javascript" src="global.js"></script>
+		<script>
+            /*
+            function options() {
+                var english = document.getElementById("english").checked;
+                var chinese = document.getElementById("chinese").checked;
+                var words = document.getElementById("words").checked;
+                var images = document.getElementById("images").checked;
+                if (chinese) {
+                    //glanguage = "Chinese";
+                    //localStorage.setItem("language", "Chinese");
+                    localStorage.language = "Chinese";
+                } else {
+                    //glanguage = "English";
+                    //localStorage.setItem("language", "English");
+                    localStorage.language = "English";
+                }
+                
+            }
+            */
+            function practice() {
+                //options();
+                //ggamemode = "PRACTICE MODE";
+                //window.alert(ggamemode);
+                //localStorage.setItem("gamemode", "PRACTICE MODE");
+                localStorage.gamemode = "PRACTICE MODE"; // remember game mode for the game.html page to use
+                //alert(localStorage.gamemode);
+                window.location.href = "game.html"; // jump to page
+            }
+            function challenge() {
+                //options();
+                //ggamemode = "CHALLENGE MODE";
+                //window.alert(ggamemode);
+                //localStorage.setItem("gamemode", "CHALLENGE MODE");
+                localStorage.gamemode = "CHALLENGE MODE"; // remember game mode for the game.html page to use
+                //alert(localStorage.gamemode);
+                window.location.href = "game.html"; // jump to page
+            }
+		</script>
+	</head>
+	<body>
+		<center>
+			<img src= "logo2.png" height= "139" width= "306">
+			<img src= "logo1.png" height= "150" width= "500" />
+			<br/>
+		</center>
+		<h1 class= "Gpara">	Check your language knowledge! </h1>
+		<img class="flip" style="position:absolute; TOP:100px; LEFT:290px;" src="rainbow8.png" height= "180" width="250"/>
+		<img style="position:absolute; TOP:100px; LEFT:1380px;" src="rainbow8.png" height= "180" width="250" align="right"/>
+		<h2>Not sure how good you are? Want a challenge?
+		<br/>
+		Want to know how competent you are at English? 	</h2>
+		<img class="flip" style="position:absolute; TOP:245px; LEFT:320px;" src= "unicorn1.png" height= "150" width= "l50" align= "left"/>
+		<img style="position:absolute; TOP:240px; LEFT:1430px;" src= "unicorn7.png" height= "165" width= "l65" align= "right"/>
+		<center>
+			<div>
+				<span style="color:blue;font-weight:bold;font-size:28px">
+					This is a simple game that helps you find out <br>how good you are at English vocabulary.
+				</span>
+				<br/><br/><br/>
+				Here's a great way to learn new words and review those you already know. 
+				<br/><br/>
+				Whenever you are ready, click on "PRACTISE MODE" to work on some exercises before you move onto the actual test. 
+				<br/><br/>
+				Click on "CHALLENGE MODE" to start the level test. 
+				<br/><br/><br/>
+				<span style="font-weight:bold;font-size:25px">
+					The test consists of 4 levels: 
+				</span>
+				<br/><br/>
+				<span style="font-weight:bold;font-size:20px">
+					Level 1 - BEGINNERS: Start with simple words and familiarize yourself with the rules!
+				</span>
+				<br/><br/>
+				<span style="font-weight:bold;font-size:20px">
+					Level 2 - INTERMEDIATE: Test yourself with more advanced words!
+				</span>
+				<br/><br/>
+				<span style="font-weight:bold;font-size:20px">
+					Level 3 - ADVANCED: Try beat an average school student!
+				</span>
+				<br/><br/>
+				<span style="font-weight:bold;font-size:20px">
+					Level 4 - EXPERT: Upon completion of this level, call yourself an English pro!
+				</span>
+				<br/><br/><br/>
+				In each level, you will see words falling on the screen. 
+				<br/>
+				All you need to do is write down the corresponding English words in the blank box and press SUBMIT.
+				<br/><br/><br/><br/>
+				<span style="color:blue;font-weight:bold;font-size:22px">
+					Don't forget to click the "Submit" button before you click on "Next" ! 
+				</span>
+				<br/>
+			</div>
+		</center>
+			<br/>
+			<p class="custom">Choose a game mode!</p> 
+			<br/>
+			<center>
+				<span style="font-size:25px;font-family:arial">
+					<button onclick="practice()">PRACTICE MODE</button>
+					<br/><br/>
+					<button onclick="challenge()">CHALLENGE MODE</button>
+				</span>
+			</center>
+			<br/><br/>
+	</body>
+</html>
