@@ -1,7 +1,14 @@
+.content {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 .errorarea {
   color: red;
 }
 
 .hiddenarea {
-  //display: none;
+  display: none;
 }
