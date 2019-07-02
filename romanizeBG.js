@@ -6,6 +6,7 @@ function markStressBg() {
 
 function bulgarianStress(word) {
   alert("2");
+  alert(word);
   var output = "test";
   alert(output);
   word = encodeURIComponent(word); // encode into URL form
