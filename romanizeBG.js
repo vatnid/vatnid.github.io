@@ -5,7 +5,7 @@ function markStressBg() {
 }
 
 function bulgarianStress(word) {
-  alert("2");
+  alert("2a");
   var output = ""; // initialize output
   word = encodeURIComponent(word); // encode into URL form
   var url = "https://api.allorigins.ml/get?method=raw&url=" + encodeURIComponent("https://rechnik.chitanka.info/w/" + word) + "&callback=?";
