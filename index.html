@@ -22,7 +22,8 @@
           document.getElementById("output").value = romanizeBG(source);
         } else if (document.getElementById("debug").selected == true) {
           alert("run before bulgarianStress()");
-          bulgarianStress("слънце");
+          document.getElementById("output").value = bulgarianStress("слънце");
+          //bulgarianStress("слънце");
         }
       }
 

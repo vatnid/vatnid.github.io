@@ -6,6 +6,7 @@ function markStressBg() {
 
 function bulgarianStress(word) {
   alert("bulgarianStres(word) begins");
+  var output = "test";
   word = encodeURIComponent(word); // encode into URL form
   var url = "https://api.allorigins.ml/get?method=raw&url=" + encodeURIComponent("https://rechnik.chitanka.info/w/" + word) + "&callback=?";
   $.get(url, function (data) {
@@ -14,6 +15,8 @@ function bulgarianStress(word) {
     stress = data.match(regex)[1];
     markStressBg();
   });
+
+  return output;
 }
 
 // Bulgarian Cyrillic → Latin
