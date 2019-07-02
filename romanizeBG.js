@@ -9,11 +9,13 @@ function bulgarianStress(word) {
   var output = ""; // initialize output
   word = encodeURIComponent(word); // encode into URL form
   var url = "https://api.allorigins.ml/get?method=raw&url=" + encodeURIComponent("https://rechnik.chitanka.info/w/" + word) + "&callback=?";
-  alert("url: " + url);
+  alert("url = " + url);
   $.get(url, function (data) {
     //document.getElementById("target").value = data;
     var regex = /(?:<span id="name-stressed_[0-9]*">\s*)(.*)(?:\s*<\/span>)/;
-    stress = data.match(regex)[1];
+    alert("regex = " + regex);
+    var stress = data.match(regex)[1];
+    alert("stress = " + stress);
     markStressBg();
   });
 
