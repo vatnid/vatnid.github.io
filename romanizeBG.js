@@ -6,11 +6,10 @@ function markStressBg() {
 
 function bulgarianStress(word) {
   alert("2");
-  alert(word);
-  var output = "test";
-  alert(output);
+  var output = ""; // initialize output
   word = encodeURIComponent(word); // encode into URL form
   var url = "https://api.allorigins.ml/get?method=raw&url=" + encodeURIComponent("https://rechnik.chitanka.info/w/" + word) + "&callback=?";
+  alert("url: " + url);
   $.get(url, function (data) {
     //document.getElementById("target").value = data;
     var regex = /(?:<span id="name-stressed_[0-9]*">\s*)(.*)(?:\s*<\/span>)/;
@@ -28,7 +27,7 @@ function romanizeBG(input) {
   var latin =     ["a", "b", "v", "g", "d", "e", "ž", "z", "i", "j", "k", "l", "m", "n", "o", "p", "r", "s", "t", "u", "f", "h", "c", "č", "š", "št", "ă", "j", "ju", "ja",
                    "A", "B", "V", "G", "D", "E", "Ž", "Z", "I", "J", "K", "L", "M", "N", "O", "P", "R", "S", "T", "U", "F", "H", "C", "Č", "Š", "Št", "Ă", "J", "Ju", "Ja"];
   var symbols = /[.,\/#!$%\^&\*;:{}=\-_`~() ]/;
-  var output = "";
+  var output = ""; // initialize output
 
   var words = input.split();
 
