@@ -5,12 +5,14 @@ function markStressBg() {
 }
 
 function bulgarianStress(word) {
-  alert("2a");
+  alert("2");
   var output = ""; // initialize output
   word = encodeURIComponent(word); // encode into URL form
-  var url = "https://api.allorigins.ml/get?method=raw&url=" + encodeURIComponent("https://rechnik.chitanka.info/w/" + word) + "&callback=?";
+  var url = "http://www.whateverorigin.org/get?url=" + "https://rechnik.chitanka.info/w/" + encodeURIComponent(word) + "&callback=?";
   alert("url = " + url);
-  $.get(url, function (data) {
+  output = url;
+  $.get(url, function(data) {
+    alert("get running");
     //document.getElementById("target").value = data;
     var regex = /(?:<span id="name-stressed_[0-9]*">\s*)(.*)(?:\s*<\/span>)/;
     alert("regex = " + regex);
