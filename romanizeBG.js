@@ -8,18 +8,24 @@ function bulgarianStress(word) {
   alert("2");
   var output = ""; // initialize output
   word = encodeURIComponent(word); // encode into URL form
-  var url = "http://www.whateverorigin.org/get?url=" + "https://rechnik.chitanka.info/w/" + encodeURIComponent(word) + "&callback=?";
+
+  //var url = "http://www.whateverorigin.org/get?url=" + "https://rechnik.chitanka.info/w/" + encodeURIComponent(word) + "&callback=?";
+
+  //var url = "https://crossorigin.me/" + "https://rechnik.chitanka.info/w/" + word;
+  var url = "https://crossorigin.me/https://vatnid.github.io/";
   alert("url = " + url);
-  output = url;
-  $.get(url, function(data) {
-    alert("get running");
-    //document.getElementById("target").value = data;
-    var regex = /(?:<span id="name-stressed_[0-9]*">\s*)(.*)(?:\s*<\/span>)/;
-    alert("regex = " + regex);
-    var stress = data.match(regex)[1];
-    alert("stress = " + stress);
-    markStressBg();
-  });
+
+  $.get(url, function (data) {
+      alert("3");
+      //document.getElementById("target").value = data;
+      var regex = /(?:<span id="name-stressed_[0-9]*">\s*)(.*)(?:\s*<\/span>)/;
+      alert("regex = " + regex);
+      var stress = data.match(regex)[1];
+      alert("stress = " + stress);
+      markStressBg();
+      output = data;
+    }
+  );
 
   return output;
 }
