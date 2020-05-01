@@ -1,7 +1,19 @@
+.title {
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+  text-align: center;
+  font-weight: bold;
+  font-size: xx-large;
+}
+
 .content {
   position: fixed;
   left: 50%;
   transform: translate(-50%);
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+}
+
+.instruction {
+  font-weight: bold;
 }
 
 .errorarea {
