@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <title>Order</title>
+  </head>
+  <body>
+    <div id="errormessage" class="error">
+
+    </div>
+    <div id="nonerror" onclick="clearsubmit()">
+    <header>
+      <img class="logo" src="../images/logo.png" alt="logo"><br>
+      <h1 class="title">Tromsø Cake Shop</h1>
+    </header>
+    <div class="centre">
+      <nav>
+        <div class="nagivation">
+          <img class="navimg" src="../images/viewlist.png" alt="nav"><br>
+          <div class="navtext">
+            <a href="home.html">Home</a><br>
+            <a href="order.html">Order</a><br>
+            <a href="design.html">About Us</a><br>
+            <a href="">Terms of Use</a>
+          </div>
+        </div>
+      </nav>
+      <div class="content">
+        <form action="print.html" onsubmit="return isValid()">
+          <fieldset>
+            <legend>Order Information</legend>
+            <label class="text">Order (Tel.) no.</label>
+            <input id="tel" type="text" name="tel" value=""><br>
+            <label class="text">Pick up date</label>
+            <input id="pickupdate" type="text" name="pickupdate" value=""><br>
+            <label>Delivery </label>
+            <input id="delivery" type="radio" name="method" value="delivery">
+            <label>Pick Up </label>
+            <input id="pickup" type="radio" name="method" value="pickup">
+          </fieldset>
+          <div>
+            <div class="cakerow">
+              <img class="cakepic" src="../images/Buccellator.jpg" title="Buccellator" onclick="getQuantity(0)">
+              <img class="cakepic" src="../images/Strawberry.jpg" title="Starwberry" onclick="getQuantity(1)">
+              <img class="cakepic" src="../images/FrenchCruller.jpg" title="French Cruller" onclick="getQuantity(2)">
+              <img class="cakepic" src="../images/PoundLayer.jpg" title="Pound Layer" onclick="getQuantity(3)">
+            </div>
+          </div><br>
+          <div>
+            <table id="ordertable">
+              <caption id="orderno"></caption>
+              <thead>
+                <tr>
+                  <td>Cake name</td><td>Quantity</td>
+                </tr>
+              </thead>
+              <tbody>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td>Total</td><td id="total"></td>
+                </tr>
+              </tfoot>
+            </table>
+            <input type="submit" value="Print Invoice">
+          </div>
+        </form>
+      </div>
+    </div>
+    <footer>
+      <span>© CityU 2017 sources of images and text from Wikipedia &amp; courtesy of all-free-download.com<br>
+        <a href="home.html">Home</a>
+        <a href="order.html">Order</a>
+        <a href="design.html">About Us</a>
+        <a href="">Terms of Use</a>
+      </span>
+    </footer>
+
+
+    <script type="text/javascript" src="../scripts/cakemenu.js"></script>
+    <script type="text/javascript">
+      localStorage.clear();
+      var menu = initMenu();
+      var table = document.getElementById("ordertable").getElementsByTagName("tbody")[0];
+      var oddeven = 1;
+      var total = 0;
+      var errormsg = "";
+      var errorblock = document.querySelector("#errormessage");
+      errorblock.style.display = "none";
+      var nonerrorblock = document.querySelector("#nonerror");
+      document.getElementById("total").innerHTML = total;
+
+      // query parsing
+      var str = "";
+      var query = location.search;
+      if (query.charAt(0) == "?")
+        str = query.substr(1);
+      function getValue(name) {
+        var split = str.split("&");
+        for (i = 0; i < split.length; i++) {
+          var item = split[i].split("=");
+          for (j = 0; j < item.length; j++) {
+            if (item[0] == name)
+              return item[1];
+          }
+        }
+      }
+      document.getElementById("tel").value = getValue("tel");
+      document.getElementById("orderno").innerHTML = "Order no. " + getValue("tel");
+      document.getElementById("pickupdate").value = getValue("pickupdate");
+      if (getValue("method") == "delivery") {
+        document.getElementById("delivery").checked = "checked";
+      } else {
+        document.getElementById("pickup").checked = "checked";
+      }
+
+      // default values
+      if (getValue("tel") == null) {
+        document.getElementById("tel").value = "93840475";
+        document.getElementById("orderno").innerHTML = "Order no. 93840475";
+      }
+      if (getValue("pickupdate") == null)
+        document.getElementById("pickupdate").value = "20181223";
+
+      function isValid() {
+        errormsg = "";
+        errorblock.style.display = "none";
+        var telvalid = true;
+        var datevalid = true;
+        // for telephone number
+        if (isNaN(document.getElementById("tel").value)) {
+          telvalid = false;
+          errormsg += "Your telephone number is not a nubmer.\r\n";
+        }
+        if (document.getElementById("tel").value.replace(/^\s+/, '').replace(/\s+$/, '') === '') {
+          telvalid = false;
+          errormsg += "Your telephone number all spaces.\r\n";
+        }
+        if (document.getElementById("tel").value == "") {
+          telvalid = false;
+          errormsg += "Your telephone number is empty.\r\n";
+        }
+        // for pickup date
+        if (document.getElementById("pickupdate").value.replace(/^\s+/, '').replace(/\s+$/, '') === '') {
+          datevalid = false;
+          errormsg += "Your pickup date is all spaces.\r\n";
+        }
+        if (document.getElementById("pickupdate").value == "") {
+          datevalid = false;
+          errormsg += "Your pickup date is empty.\r\n";
+        }
+
+        if (telvalid && datevalid)
+          return true;
+        else {
+          nonerrorblock.style.opacity = "0.4";
+          errorblock.style.display = "block";
+          document.getElementById("errormessage").innerHTML = errormsg;
+          return false;
+        }
+      }
+
+      function getQuantity(index) {
+        var qty = prompt("Please enter the quantity", "");
+        // check if input is number
+        while (true) {
+          if (isNaN(qty))
+            var qty = prompt("Please re-enter the quantity", "");
+          else
+            break;
+        }
+
+        total += parseInt(qty);
+        document.getElementById("total").innerHTML = total;
+
+        // add rows
+        var newRow = table.insertRow(0);
+        var nameRow = newRow.insertCell(0);
+        var nameText = document.createTextNode(menu[index].description);
+        nameRow.appendChild(nameText);
+        var qtyRow = newRow.insertCell(1);
+        var qtyText = document.createTextNode(qty);
+        qtyRow.appendChild(qtyText);
+
+        localStorage.setItem(index, parseInt(qty));
+
+        // style
+        if (oddeven == 0) {
+          newRow.className = "even";
+          oddeven = 1;
+        } else {
+          newRow.className = "odd";
+          oddeven = 0;
+        }
+
+      }
+
+      function clearsubmit() {
+        if (nonerrorblock.style.opacity == "0.4") {
+          nonerrorblock.style.opacity = "1";
+          errormsg = "";
+          document.getElementById("errormessage").innerHTML = errormsg;
+
+          document.getElementById("tel").value = "";
+          document.getElementById("pickupdate").value = "";
+        }
+      }
+    </script>
+    </div>
+  </body>
+</html>

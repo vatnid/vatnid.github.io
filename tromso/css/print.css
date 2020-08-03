@@ -1,0 +1,82 @@
+body {
+  display: table-cell;
+}
+
+header {
+  padding-left: 10px;
+  background-color: #c1c1c1;
+}
+
+.logo {
+  width: 100px;
+}
+
+h1.title {
+  margin: auto;
+  position: absolute;
+  font-size: 20px;
+  top: 40px;
+  left: 17px;
+  transform: rotate(-10deg);
+  color: #3d3d3d;
+  font-family: "Charcoal";
+}
+
+.content {
+  display: table;
+  width: 100%;
+  padding: 20px;
+  display: table-cell;
+  //float: left;
+  background-color: #e0e0e0;
+}
+
+label.text {
+  float: left;
+  width: 7em;
+  margin-right: 1em;
+}
+
+.rbutton {
+  float: left;
+  width: 7em;
+  margin-right: 1em;
+}
+
+table {
+  border-collapse: collapse;
+  border: 0;
+}
+
+thead {
+  background-color: #939393;
+}
+
+tr.odd {
+  background-color: #bcbcbc;
+}
+
+tr.even {
+  background-color: #a8a8a8;
+}
+
+tfoot {
+  background-color: #7a7a7a;
+}
+
+.cakepic {
+  height: 100px;
+  float: left;
+}
+
+.cakerow::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+@media print {
+  #clearinvoicebutton {
+    display: none;
+  }
+}

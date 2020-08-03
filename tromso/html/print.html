@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="../css/print.css">
+    <title>Print</title>
+  </head>
+  <body>
+    <header>
+      <img class="logo" src="../images/logo.png" alt="logo"><br>
+      <h1 class="title">Tromsø Cake Shop</h1>
+    </header>
+    <div class="content">
+      <span id="ordernoprint"></span><br>
+      <span id="pickupdateprint"></span><br>
+      <span>Delivery </span>
+      <input id="deliverybuttonprint" type="radio" name="method" value="delivery" disabled><br>
+      <span>Pick Up </span>
+      <input id="pickupbuttonprint" type="radio" name="method" value="pickup" disabled>
+      <table id="printtable">
+        <caption>Order details</caption>
+        <thead>
+          <tr>
+            <td>Cake name</td><td>Quantity</td>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td>Total</td><td id="totalprint"></td>
+          </tr>
+          <tr>
+            <td>Price</td><td id="price"></td>
+          </tr>
+        </tfoot>
+      </table>
+
+      <button id="clearinvoicebutton" type="button" name="button" onclick="clearInvoice()">Clear Invoice</button>
+    </div>
+
+
+    <script type="text/javascript" src="../scripts/cakemenu.js"></script>
+    <script type="text/javascript">
+      var menu = initMenu();
+      var table = document.getElementById("printtable").getElementsByTagName("tbody")[0];
+      var oddeven = 1;
+      var total = 0;
+      var price = 0;
+
+      // query parsing
+      var str = "";
+      var query = location.search;
+      if (query.charAt(0) == "?")
+        str = query.substr(1);
+      function getValue(name) {
+        var split = str.split("&");
+        for (i = 0; i < split.length; i++) {
+          var item = split[i].split("=");
+          for (j = 0; j < item.length; j++) {
+            if (item[0] == name)
+              return item[1];
+          }
+        }
+      }
+
+      document.getElementById("ordernoprint").innerHTML = "Order (Tel.) No. - " + getValue("tel");
+      document.getElementById("pickupdateprint").innerHTML = "Pick Up Date - " + getValue("pickupdate");
+      if (getValue("method") == "delivery") {
+        document.getElementById("deliverybuttonprint").checked = true;
+      } else {
+        document.getElementById("pickupbuttonprint").checked = true;
+      }
+
+      // build table
+      for (i = 0; i < menu.length; i++) {
+        if (localStorage[i] != null) {
+          total += parseInt(localStorage[i]);
+          price += menu[i].price * parseInt(localStorage[i]);
+          var newRow = table.insertRow(0);
+          var nameRow = newRow.insertCell(0);
+          var nameText = document.createTextNode(menu[i].description);
+          nameRow.appendChild(nameText);
+          var qtyRow = newRow.insertCell(1);
+          var qtyText = document.createTextNode(localStorage[i]);
+          qtyRow.appendChild(qtyText);
+
+          // style
+          if (oddeven == 0) {
+            newRow.className = "even";
+            oddeven = 1;
+          } else {
+            newRow.className = "odd";
+            oddeven = 0;
+          }
+        }
+      }
+
+      document.getElementById("totalprint").innerHTML = total;
+      document.getElementById("price").innerHTML = "$" + price;
+
+      function clearInvoice() {
+        localStorage.clear();
+        window.location.href = "home.html";
+      }
+
+    </script>
+  </body>
+</html>
