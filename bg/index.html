@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="style.css">
+    <title>Bulgarian Romanization Converter</title>
+  </head>
+  <body>
+    <script src="jquery.js"></script>
+    <script src="romanizeBG.js"></script>
+    <script type="text/javascript">
+      var stress = "";
+
+      function convert() {
+        var source = document.getElementById("input").value;
+        var target = document.getElementById("output").value;
+
+        // Bulgarian Cyrillic → Latin
+        if (document.getElementById("romanizebg").selected == true) {
+          document.getElementById("output").value = romanizeBG(source);
+        } else if (document.getElementById("debug").selected == true) {
+          alert("1");
+          document.getElementById("output").value = bulgarianStress("слънце");
+          //bulgarianStress("слънце");
+        }
+      }
+
+    </script>
+    <br>
+    <div class="title">
+      <span>🇧🇬 Bulgarian Romanization Converter 🇧🇬</span>
+    </div><br>
+    <div class="content">
+      <div class="inputarea">
+        <span class="instruction">Input Cyrillic here:</span><br>
+        <textarea id="input" cols="50" rows="15"></textarea><br>
+        <select>
+          <option id="romanizebg" value="romanizebg" selected="selected">Български → Bălgarski</option>
+          <option id="debug" value="debug">Debug mode</option>
+        </select>
+        <input type="submit" value="Submit" onclick="return convert();" />
+      </div>
+      <br>
+      <div class="outputarea">
+        <span class="instruction">Output:</span><br>
+        <textarea id="output" cols="50" rows="15"></textarea>
+      </div>
+      <div class="errorarea">
+        <span id="errormsg"></span>
+      </div>
+      <div class="hiddenarea">
+        <span id="placeholder"></span>
+      </div>
+    </div>
+  </body>
+</html>
