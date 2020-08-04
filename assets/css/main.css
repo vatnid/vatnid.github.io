@@ -20,7 +20,7 @@ body {
 
 /* Titles */
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'Trebuchet MS', sans-serif;
+    font-family: 'Helvetica', sans-serif;
     font-weight: 300;
     color: #333;
 }
@@ -108,7 +108,7 @@ a:after {
 	margin-top: 0px;
 	color: white;
 	font-size: 70px;
-	/*font-weight: 700;*/
+	font-weight: 700;
 }
 
 #headerwrap h3 {
