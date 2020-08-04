@@ -9,7 +9,7 @@
 
 body {
   background-color: #f2f2f2;
-    font-family: 'EB Garamond', serif;
+    font-family: 'Georgia', serif;
     font-weight: 300;
     font-size: 16px;
     color: #555;
@@ -90,7 +90,7 @@ a:after {
 	text-align:center;
 	background-attachment: relative;
 	background-position: center center;
-	min-height: 800px;
+	min-height: 1000px;
 	width: 100%;
 
     -webkit-background-size: 100%;
@@ -115,7 +115,7 @@ a:after {
 	color: white;
 	font-size: 30px;
 	font-weight: 100;
-    font-family: 'EB Garamond', serif;
+    font-family: 'Georgia', serif;
     font-style: oblique;
 }
 
