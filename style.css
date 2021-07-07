@@ -39,37 +39,37 @@ body {
   white-space: nowrap;
 }
 
-#intro{
+#intro {
   font-size: 35px;
   padding: 10px;
 }
 
-#links{
+#links {
   margin: auto;
   padding: 20px;
   font-size: 25px;
 }
 
-.linkitem{
+.linkitem {
   padding: 10px;
 }
 
-a{
+a {
   text-underline-offset: 3px;
 }
 
-a:link{
+a:link {
   color: white;
 }
 
-a:visited{
+a:visited {
   color: white;
 }
 
-a:hover{
+a:hover {
   color: darkgrey;
 }
 
-a:active{
+a:active {
   color: lightslategrey;
 }
