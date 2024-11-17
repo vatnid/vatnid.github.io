@@ -1,16 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap');
 
 body {
   background-color: #383838;
 }
 
-#main {
+#banner {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  margin: 40px;
+}
 
+#container {
   position: absolute;
   left: 50%;
   top: 50%;
@@ -22,7 +26,7 @@ body {
 
 #logo {
   border-radius: 50%;
-  padding: 20px;
+  padding: 10px;
 }
 
 #name {
@@ -34,24 +38,26 @@ body {
   /*font-family: 'Montserrat', sans-serif;*/
 }
 
-#right {
-  font-family: 'Atkinson Hyperlegible', sans-serif;
+#banner_right {
+  font-family: 'Roboto Condensed', sans-serif;
   color: white;
   text-align: center;
-  margin: 50px;
+  margin: 20px;
   white-space: nowrap;
-  padding-top: 20px;
+  padding-top: 0px;
 }
 
 #intro {
-  font-size: 35px;
+  font-size: 25px;
   padding: 10px;
 }
 
 #links {
+  font-family: 'Roboto Condensed', sans-serif;
   margin: auto;
   padding: 10px;
-  font-size: 25px;
+  font-size: 20px;
+  color: white;
 }
 
 .linkitem {
